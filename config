@@ -140,8 +140,6 @@ bindsym $mod+r mode "resize"
 # Running apps on startup
 exec --no-startup-id i3-msg 'workspace 1: Comms; exec /usr/bin/evolution'
 exec --no-startup-id i3-msg 'workspace 2: Firefox; exec /usr/bin/firefox'
-exec --no-startup-id i3-msg 'workspace 5: Cronitor; exec cronitor'
-
 
 # Look and feel
 client.focused          #0AEB20 #297832 #ffffff #2EF649   #297832
