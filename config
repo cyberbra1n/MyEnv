@@ -1,0 +1,170 @@
+
+
+##### GLOBAL SETTINGS #####
+
+# Set mode key to 'Windows' key
+set $mod Mod4
+
+# Global font in use (can be overriden in bar section)
+font pango:monospace 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+##### END GLOBAL SETTINGS #####
+
+
+
+##### SHORTCUTS #####
+
+# Start a terminal (MOD+ENTER)
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Kill focused window (MOD+SHIFT+Q)
+bindsym $mod+Shift+q kill
+
+# Start dmenu (a program launcher) (MOD+D)
+bindsym $mod+d exec dmenu_run
+
+# Change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split in horizontal orientation
+bindsym $mod+h split h
+
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Switch to workspace
+bindsym $mod+1 workspace "1: Comms"
+bindsym $mod+2 workspace "2: Firefox"
+bindsym $mod+3 workspace "3: App3"
+bindsym $mod+4 workspace "4: App4"
+bindsym $mod+5 workspace "5: App5"
+bindsym $mod+6 workspace "6: Local"              
+bindsym $mod+7 workspace "7: Remote1"
+bindsym $mod+8 workspace "8: Remote2"
+bindsym $mod+9 workspace "9: Remote3" 
+bindsym $mod+0 workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace "1: Comms"
+bindsym $mod+Shift+2 move container to workspace "2: Firefox"
+bindsym $mod+Shift+3 move container to workspace "3: App3"
+bindsym $mod+Shift+4 move container to workspace "4: App4"
+bindsym $mod+Shift+5 move container to workspace "5: App5"
+bindsym $mod+Shift+6 move container to workspace "6: Local"              
+bindsym $mod+Shift+7 move container to workspace "7: Remote1"
+bindsym $mod+Shift+8 move container to workspace "8: Remote2"
+bindsym $mod+Shift+9 move container to workspace "9: Remote3" 
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Terminate i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# RESIZE MODE
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+##### END SHORTCUTS #####
+
+
+
+##### LOOK AND FEEL #####
+
+# Running apps on startup
+exec --no-startup-id i3-msg 'workspace 1: Comms; exec /usr/bin/evolution'
+exec --no-startup-id i3-msg 'workspace 2: Firefox; exec /usr/bin/firefox'
+exec --no-startup-id i3-msg 'workspace 5: Cronitor; exec cronitor'
+
+
+# Look and feel
+client.focused          #0AEB20 #297832 #ffffff #2EF649   #297832
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292E29   #222222
+client.urgent           #303B30 #B3FF00 #ffffff #B3FF00   #B3FF00
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+bar {
+#	font pango:Source Sans Pro-10 10
+#	status_command i3blocks -c ~/.i3/i3status.conf
+        status_command i3status
+        tray_output primary
+		colors {
+			separator          #000000
+			background         #000000
+			statusline         #ffffff
+			focused_workspace  #000000 #17EB29 #000000
+			active_workspace   #000000 #13861D #ffffff
+			inactive_workspace #000000 #262626 #ffffff
+			urgent_workspace   #FFFC00 #B3FF00 #000000
+		}
+}
+
+##### END LOOK AND FEEL #####
+
